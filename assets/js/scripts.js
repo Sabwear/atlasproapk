@@ -19,6 +19,61 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
+
+  // Interactive TMDB Series & Movies Showcase Sliders
+  document.querySelectorAll('.tmdb-row-card').forEach((rowCard) => {
+    const featured = rowCard.querySelector('.tmdb-featured');
+    const titleEl = rowCard.querySelector('.tmdb-featured-title');
+    const metaEl = rowCard.querySelector('.tmdb-featured-meta');
+    const descEl = rowCard.querySelector('.tmdb-featured-desc');
+    const countEl = rowCard.querySelector('.tmdb-featured-count');
+    const track = rowCard.querySelector('.tmdb-track');
+    const cards = Array.from(rowCard.querySelectorAll('.tmdb-poster-card'));
+    const prevBtn = rowCard.querySelector('[data-tmdb-prev]');
+    const nextBtn = rowCard.querySelector('[data-tmdb-next]');
+
+    if (!featured || !track || cards.length === 0) return;
+
+    let activeIndex = 0;
+
+    const selectCard = (idx, scrollIntoView = false) => {
+      activeIndex = (idx + cards.length) % cards.length;
+      const card = cards[activeIndex];
+      cards.forEach((c, i) => c.classList.toggle('active', i === activeIndex));
+
+      const bg = card.getAttribute('data-backdrop');
+      const title = card.getAttribute('data-title');
+      const meta = card.getAttribute('data-meta');
+      const desc = card.getAttribute('data-desc');
+      const count = card.getAttribute('data-count');
+
+      if (bg) featured.style.backgroundImage = `url('${bg}')`;
+      if (title && titleEl) titleEl.textContent = title;
+      if (meta && metaEl) metaEl.textContent = meta;
+      if (desc && descEl) descEl.textContent = desc;
+      if (count && countEl) countEl.textContent = count;
+
+      if (scrollIntoView) {
+        const cardLeft = card.offsetLeft - track.offsetLeft;
+        track.scrollTo({
+          left: Math.max(0, cardLeft - 14),
+          behavior: 'smooth'
+        });
+      }
+    };
+
+    cards.forEach((card, idx) => {
+      card.addEventListener('click', () => selectCard(idx, false));
+    });
+
+    if (prevBtn) {
+      prevBtn.addEventListener('click', () => selectCard(activeIndex - 1, true));
+    }
+
+    if (nextBtn) {
+      nextBtn.addEventListener('click', () => selectCard(activeIndex + 1, true));
+    }
+  });
 });
 
 // Back to Top Progress Circle
