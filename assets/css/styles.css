@@ -163,19 +163,100 @@ h1, h2, h3, h4 {
 }
 
 .homepage-hero {
+  background-color: #080c1a;
   background-image:
-    linear-gradient(90deg, rgba(8, 12, 26, 0.88) 0%, rgba(8, 12, 26, 0.45) 55%, rgba(8, 12, 26, 0.25) 100%),
-    url("../../images/hero%20section.png");
+    linear-gradient(90deg, rgba(8, 12, 26, 0.88) 0%, rgba(8, 12, 26, 0.62) 36%, rgba(8, 12, 26, 0.08) 58%, rgba(8, 12, 26, 0.0) 100%),
+    url("../../images/atlas%20apk%20hero.png");
   background-size: cover;
-  background-position: center;
+  background-position: center right;
   background-repeat: no-repeat;
+}
+
+.hero-brand-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.hero-ontv-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #9333ea 0%, #db2777 100%);
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  box-shadow: 0 4px 14px rgba(219, 39, 119, 0.45);
+}
+
+.hero-title-gradient {
+  background: linear-gradient(90deg, #e879f9 0%, #a855f7 55%, #6366f1 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-title-divider {
+  width: 56px;
+  height: 4px;
+  border-radius: 4px;
+  background: linear-gradient(90deg, #ec4899 0%, #8b5cf6 100%);
+  margin: 18px 0 22px;
+}
+
+.hero-info-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.hero-info-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 20px;
+  border-radius: 14px;
+  background: rgba(12, 16, 35, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  min-width: 195px;
+}
+
+.hero-info-card svg {
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
+}
+
+.hero-info-number {
+  font-size: 20px;
+  font-weight: 800;
+  line-height: 1.15;
+}
+
+.hero-info-number--pink {
+  color: #e879f9;
+}
+
+.hero-info-number--blue {
+  color: #38bdf8;
+}
+
+.hero-info-label {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.75);
 }
 
 .subpage-hero {
   background-image:
-    linear-gradient(180deg, rgba(8, 12, 26, 0.78) 0%, rgba(8, 12, 26, 0.96) 100%),
-    var(--hero-glow-left),
-    var(--hero-glow-right);
+    linear-gradient(180deg, rgba(8, 12, 26, 0.72) 0%, rgba(8, 12, 26, 0.96) 100%),
+    url("../../images/hero%20section.png");
+  background-size: cover;
+  background-position: center;
   padding-bottom: 48px;
 }
 
@@ -306,11 +387,23 @@ h1, h2, h3, h4 {
 
 /* Platform Bar */
 .hero-platform-bar {
-  background: var(--platform-bar-bg);
-  border-top: 1px solid var(--border-color);
+  background: rgba(8, 12, 26, 0.78);
+  border-top: 1px solid transparent;
   border-bottom: 1px solid var(--border-color);
   padding: 20px 0;
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(12px);
+  position: relative;
+}
+
+.hero-platform-bar::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, rgba(236, 72, 153, 0.2) 0%, #ec4899 25%, #a855f7 55%, #38bdf8 80%, rgba(56, 189, 248, 0.2) 100%);
+  box-shadow: 0 0 16px rgba(236, 72, 153, 0.8);
 }
 
 .hero-platforms {
