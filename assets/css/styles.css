@@ -1822,7 +1822,7 @@ h1, h2, h3, h4 {
 }
 
 .whatsapp-widget:hover {
-  max-width: 248px;
+  max-width: 280px;
   padding: 0 20px 0 16px;
   transform: translateY(-2px);
   box-shadow: 0 12px 30px rgba(37, 211, 102, 0.6);

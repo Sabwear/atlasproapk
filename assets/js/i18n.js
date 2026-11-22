@@ -10,7 +10,7 @@
     "Blog": "Blog",
     "Contact": "Contact",
     "Langue :": "Language:",
-    "Do you need help?": "Do you need help?",
+    "Do you need subscription?": "Do you need subscription?",
 
     // Hero
     "ATLAS PRO APK | Guide d'Installation": "ATLAS PRO APK | Installation Guide",
@@ -45,13 +45,14 @@
     "ÉPISODES": "EPISODES",
     "Séries × saisons": "Series × seasons",
 
-    // TMDB Showcase Sliders
+    // Showcase Sliders
     "CATALOGUE EN TEMPS RÉEL": "REAL-TIME CATALOG",
     "Aperçu de l'interface — Dernières Séries & Films": "Interface Preview — Latest Series & Movies",
-    "Découvrez la présentation TMDB intégrée au lecteur Atlas Pro ONTV avec affiches, synopsis et saisons mises à jour.": "Explore the built-in TMDB presentation in Atlas Pro ONTV with posters, synopses, and updated seasons.",
+    "Découvrez la présentation intégrée au lecteur Atlas Pro ONTV avec affiches, synopsis et saisons mises à jour.": "Explore the built-in catalog presentation in Atlas Pro ONTV with posters, synopses, and updated seasons.",
     "Dernières séries": "Latest series",
     "Derniers films": "Latest movies",
-    "AJOUT PHARE · AUJOURD'HUI": "FEATURED · TODAY",
+    "DERNIER AJOUT · AUJOURD'HUI": "LATEST ADDITION · TODAY",
+    "AJOUT PHARE · AUJOURD'HUI": "LATEST ADDITION · TODAY",
     "Ajouts récents": "Recently added",
     "8 séries": "8 series",
     "8 films": "8 movies",
@@ -402,9 +403,9 @@
     "Discuter sur WhatsApp": "Chat on WhatsApp"
   };
 
-  // Build reverse map for EN -> FR (so elements starting in English like "Do you need help?" translate to FR)
+  // Build reverse map for EN -> FR (so elements starting in English like "Do you need subscription?" translate to FR)
   const EN_TO_FR = {
-    "Do you need help?": "Besoin d'aide ?",
+    "Do you need subscription?": "Besoin d'un abonnement ?",
     "Language:": "Langue :",
     "Technical support and hosting provider for streaming APK IPTV for ATLAS PRO ONTV. 24/7 Technical Assistance.": "Guide technique et assistance à l'installation pour l'application ATLAS PRO ONTV. Support 24/7.",
     "Support hours: 24/7": "Support : 24/7",
