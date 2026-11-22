@@ -5,8 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (menuToggle && navLinks) {
     menuToggle.addEventListener('click', () => {
       navLinks.classList.toggle('active');
-      
-      // Animate menu toggle
+
       const spans = menuToggle.querySelectorAll('span');
       if (navLinks.classList.contains('active')) {
         spans[0].style.transform = 'rotate(45deg) translate(6px, 6px)';
@@ -20,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Interactive TMDB Series & Movies Showcase Sliders
+  // Interactive TMDB Series & Movies Showcase Sliders (with auto-rotate)
   document.querySelectorAll('.tmdb-row-card').forEach((rowCard) => {
     const featured = rowCard.querySelector('.tmdb-featured');
     const titleEl = rowCard.querySelector('.tmdb-featured-title');
@@ -35,6 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!featured || !track || cards.length === 0) return;
 
     let activeIndex = 0;
+    let isPaused = false;
 
     const selectCard = (idx, scrollIntoView = false) => {
       activeIndex = (idx + cards.length) % cards.length;
@@ -63,17 +63,107 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     cards.forEach((card, idx) => {
-      card.addEventListener('click', () => selectCard(idx, false));
+      card.addEventListener('click', () => {
+        isPaused = true;
+        selectCard(idx, false);
+      });
     });
 
     if (prevBtn) {
-      prevBtn.addEventListener('click', () => selectCard(activeIndex - 1, true));
+      prevBtn.addEventListener('click', () => {
+        isPaused = true;
+        selectCard(activeIndex - 1, true);
+      });
     }
 
     if (nextBtn) {
-      nextBtn.addEventListener('click', () => selectCard(activeIndex + 1, true));
+      nextBtn.addEventListener('click', () => {
+        isPaused = true;
+        selectCard(activeIndex + 1, true);
+      });
     }
+
+    rowCard.addEventListener('mouseenter', () => { isPaused = true; });
+    rowCard.addEventListener('mouseleave', () => { isPaused = false; });
+
+    setInterval(() => {
+      if (!isPaused && document.visibilityState === 'visible') {
+        selectCard(activeIndex + 1, true);
+      }
+    }, 5500);
   });
+
+  // Scroll-triggered Reveal Animations
+  const revealSelectors = [
+    '.panel-stat-card',
+    '.tmdb-row-card',
+    '.feature-card',
+    '.showcase-text',
+    '.showcase-image-container',
+    '.step-card',
+    '.official-app-card',
+    '.download-category',
+    '.faq-item',
+    '.cta-bottom',
+    '.card--download'
+  ];
+
+  const revealTargets = document.querySelectorAll(revealSelectors.join(','));
+  if (revealTargets.length > 0 && 'IntersectionObserver' in window) {
+    revealTargets.forEach((el, idx) => {
+      el.classList.add('reveal');
+      el.style.setProperty('--reveal-delay', `${(idx % 4) * 70}ms`);
+    });
+
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -30px 0px' });
+
+    revealTargets.forEach((el) => revealObserver.observe(el));
+  }
+
+  // Animated Number Count-up for Provider Panel Stats
+  const statValues = document.querySelectorAll('.panel-stat-value');
+  if (statValues.length > 0 && 'IntersectionObserver' in window) {
+    const animateCount = (el) => {
+      const raw = el.textContent.trim();
+      const target = parseInt(raw.replace(/\s+/g, ''), 10);
+      if (Number.isNaN(target)) return;
+
+      const duration = 1100;
+      const start = performance.now();
+      const formatNum = (n) => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+
+      const step = (now) => {
+        const progress = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        el.textContent = formatNum(Math.round(target * eased));
+        if (progress < 1) {
+          requestAnimationFrame(step);
+        } else {
+          el.textContent = formatNum(target);
+        }
+      };
+
+      requestAnimationFrame(step);
+    };
+
+    const statsObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          animateCount(entry.target);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.3 });
+
+    statValues.forEach((el) => statsObserver.observe(el));
+  }
 });
 
 // Back to Top Progress Circle
@@ -81,23 +171,23 @@ document.addEventListener('DOMContentLoaded', function() {
   const progressPath = document.querySelector('.progress-wrap path');
   if (progressPath) {
     const pathLength = progressPath.getTotalLength();
-    
+
     progressPath.style.transition = progressPath.style.WebkitTransition = 'none';
     progressPath.style.strokeDasharray = pathLength + ' ' + pathLength;
     progressPath.style.strokeDashoffset = pathLength;
     progressPath.getBoundingClientRect();
     progressPath.style.transition = progressPath.style.WebkitTransition = 'stroke-dashoffset 10ms linear';
-    
+
     const updateProgress = function() {
       const scroll = window.pageYOffset || document.documentElement.scrollTop;
       const height = document.documentElement.scrollHeight - window.innerHeight;
       const progress = pathLength - (scroll * pathLength / height);
       progressPath.style.strokeDashoffset = progress;
     };
-    
+
     updateProgress();
     window.addEventListener('scroll', updateProgress);
-    
+
     const progressWrap = document.querySelector('.progress-wrap');
     window.addEventListener('scroll', function() {
       if (window.pageYOffset > 50) {
@@ -106,7 +196,7 @@ document.addEventListener('DOMContentLoaded', function() {
         progressWrap.classList.remove('active-progress');
       }
     });
-    
+
     progressWrap.addEventListener('click', function(event) {
       event.preventDefault();
       window.scrollTo({

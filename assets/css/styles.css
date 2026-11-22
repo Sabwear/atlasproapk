@@ -1815,3 +1815,170 @@ h1, h2, h3, h4 {
     grid-template-columns: 1fr;
   }
 }
+
+/* =========================================================
+   ALIVE & DYNAMIC ANIMATIONS
+   ========================================================= */
+@keyframes heroFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes gentleFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.hero-brand-row {
+  animation: heroFadeUp 0.65s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.hero-title {
+  animation: heroFadeUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.1s both;
+}
+
+.hero-title-gradient {
+  background-size: 200% 200%;
+  animation: gradientShift 5s ease infinite;
+}
+
+.hero-title-divider {
+  animation: heroFadeUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.18s both;
+}
+
+.hero-desc {
+  animation: heroFadeUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.24s both;
+}
+
+.hero-info-cards {
+  animation: heroFadeUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.32s both;
+}
+
+.hero-cta-btns {
+  animation: heroFadeUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.4s both;
+}
+
+.hero-info-card {
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hero-info-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(168, 85, 247, 0.48);
+  box-shadow: 0 12px 28px rgba(168, 85, 247, 0.22);
+}
+
+.hero-platform-item {
+  transition: transform 0.25s ease, color 0.25s ease;
+}
+
+.hero-platform-item:hover {
+  transform: translateY(-2px);
+  color: #ffffff;
+}
+
+.official-app-logo {
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease;
+}
+
+.official-app-card:hover .official-app-logo {
+  transform: scale(1.07) translateY(-3px);
+  box-shadow: 0 14px 32px rgba(99, 102, 241, 0.38);
+}
+
+.btn,
+.official-app-btn {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::after,
+.official-app-btn::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.24), transparent);
+  transform: skewX(-22deg);
+  transition: left 0.55s ease;
+  pointer-events: none;
+}
+
+.btn:hover::after,
+.official-app-btn:hover::after {
+  left: 140%;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1), transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.showcase-image-container img {
+  animation: gentleFloat 6s ease-in-out infinite;
+}
+
+.step-card {
+  transition: transform 0.28s ease, border-color 0.28s ease, box-shadow 0.28s ease;
+}
+
+.step-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(168, 85, 247, 0.45);
+  box-shadow: 0 16px 36px rgba(124, 58, 237, 0.18);
+}
+
+.faq-item {
+  transition: border-color 0.25s ease, background-color 0.25s ease;
+}
+
+.faq-item:hover,
+.faq-item[open] {
+  border-color: rgba(168, 85, 247, 0.45);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-brand-row,
+  .hero-title,
+  .hero-title-gradient,
+  .hero-title-divider,
+  .hero-desc,
+  .hero-info-cards,
+  .hero-cta-btns,
+  .showcase-image-container img,
+  .whatsapp-widget {
+    animation: none !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
