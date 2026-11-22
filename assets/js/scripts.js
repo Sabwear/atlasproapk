@@ -104,7 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
     '.official-app-card',
     '.download-category',
     '.faq-item',
-    '.cta-bottom',
+    '.cta-fullwidth .cta-card-wrapper',
     '.card--download'
   ];
 
