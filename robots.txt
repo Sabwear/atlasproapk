@@ -1,4 +1,20 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://[INSERT_DOMAIN]/sitemap.xml
+# Block AI Crawlers (LLM scraping protection)
+User-agent: GPTBot
+Disallow: /
+User-agent: ClaudeBot
+Disallow: /
+User-agent: PerplexityBot
+Disallow: /
+User-agent: Applebot-Extended
+Disallow: /
+User-agent: Google-Extended
+Disallow: /
+User-agent: Bytespider
+Disallow: /
+User-agent: CCBot
+Disallow: /
+
+Sitemap: https://atlaspro.com/sitemap.xml

@@ -1,27 +1,5 @@
 .DS_Store
 .agent/
-
-# Legacy files excluded from production deployment
-SEO_FINAL_REPORT.md
-atlas-pro-ontv-apk.html
-blog.html
-blog-post-*.html
-conditions-generales.html
-confidentialite.html
-etat-reseau.html
 extract_and_inject.py
-faq.html
 fix_encoding.ps1
-mentions-legales.html
-politique-confidentialite.html
-politique-remboursement.html
-assets/js/
-images/*
-!images/atlaspro-logo.png
-!images/hero section.png
-!images/mockup.png
-!images/bg-cta.png
-!images/GoogleTV.avif
-!images/firetvstick.avif
-!images/android.avif
-!images/SMARTTV.avif
+SEO_FINAL_REPORT.md
