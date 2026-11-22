@@ -18,6 +18,9 @@ politique-remboursement.html
 assets/js/
 images/*
 !images/atlaspro-logo.png
+!images/hero section.png
+!images/mockup.png
+!images/bg-cta.png
 !images/GoogleTV.avif
 !images/firetvstick.avif
 !images/android.avif
