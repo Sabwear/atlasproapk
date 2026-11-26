@@ -400,7 +400,26 @@
     "Favoris": "Favorites",
     "Maintenance": "Maintenance",
     "Astuce": "Tip",
-    "Discuter sur WhatsApp": "Chat on WhatsApp"
+    "Discuter sur WhatsApp": "Chat on WhatsApp",
+
+    // Expanded FAQ & Blog Troubleshooting Sections
+    "Quels sont les codes Downloader officiels pour Firestick et Android TV ?": "What are the official Downloader codes for Firestick and Android TV?",
+    "Peut-on installer l'APK directement sur une Smart TV Samsung ou LG ?": "Can I install the APK directly on a Samsung or LG Smart TV?",
+    "Comment corriger l'erreur « Application non installée » sur Android ?": "How do I fix the 'App not installed' error on Android?",
+    "Dépannage : erreurs courantes sur Firestick et Android TV": "Troubleshooting: Common Errors on Firestick and Android TV",
+    "Si l'installation échoue ou si l'option": "If installation fails or the",
+    "n'apparaît pas sur votre appareil récent, appliquez ces vérifications rapides :": "option is missing on your recent device, try these quick checks:",
+    "Débloquer les options développeur sur Fire OS 7 / 8 :": "Unlock Developer Options on Fire OS 7 / 8:",
+    "Erreur d'analyse ou « Application non installée » :": "Parse Error or 'App Not Installed':",
+    "Nettoyer le stockage après installation :": "Clean up storage after installation:",
+    "Sécurité et vérification du fichier APK": "APK Security & Verification",
+    "Installer une application hors Play Store reste parfaitement sûr à condition de respecter quelques règles simples :": "Installing an app outside the Play Store is safe as long as you follow a few simple rules:",
+    "Utilisez uniquement les codes officiels :": "Use only official codes:",
+    "Conservez Google Play Protect actif :": "Keep Google Play Protect enabled:",
+    "Évitez les copies modifiées :": "Avoid modified copies:",
+    "Que faire si la mise à jour affiche une erreur ?": "What if the update shows an error?",
+    "Notez vos identifiants avant toute manipulation :": "Back up your credentials first:",
+    "Videz le cache puis réinstallez proprement :": "Clear cache and perform a clean reinstall:"
   };
 
   // Build reverse map for EN -> FR (so elements starting in English like "Do you need subscription?" translate to FR)
